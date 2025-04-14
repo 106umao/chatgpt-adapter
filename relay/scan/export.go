@@ -2,6 +2,7 @@
 package scan
 
 import (
+	"chatgpt-adapter/relay/llm/kai"
 	"github.com/iocgo/sdk"
 
 	_ "chatgpt-adapter/relay/alloc/bing"
@@ -86,6 +87,11 @@ func Injects(container *sdk.Container) (err error) {
 	}
 
 	err = blackbox.Injects(container)
+	if err != nil {
+		return
+	}
+
+	err = kai.Injects(container)
 	if err != nil {
 		return
 	}

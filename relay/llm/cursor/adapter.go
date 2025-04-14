@@ -22,6 +22,10 @@ type api struct {
 	env *env.Environment
 }
 
+func (api *api) Name() string {
+	return Model
+}
+
 func (api *api) Match(ctx *gin.Context, model string) (ok bool, err error) {
 	if len(model) <= 7 || Model+"/" != model[:7] {
 		return

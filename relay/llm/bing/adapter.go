@@ -33,6 +33,10 @@ type api struct {
 	env *env.Environment
 }
 
+func (api *api) Name() string {
+	return Model
+}
+
 func (api *api) Match(ctx *gin.Context, model string) (ok bool, err error) {
 	var token = ctx.GetString("token")
 	ok = Model == model || model == Model+"-reason"

@@ -28,6 +28,10 @@ type api struct {
 	env *env.Environment
 }
 
+func (api *api) Name() string {
+	return Model
+}
+
 func (api *api) Match(ctx *gin.Context, model string) (ok bool, err error) {
 	if Model == model {
 		ok = true

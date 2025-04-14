@@ -2,10 +2,12 @@ package inter
 
 import (
 	"chatgpt-adapter/core/gin/model"
+
 	"github.com/gin-gonic/gin"
 )
 
 type Adapter interface {
+	Name() string
 	Match(ctx *gin.Context, model string) (bool, error)
 	Models() []model.Model
 	Completion(ctx *gin.Context) error
@@ -17,6 +19,7 @@ type Adapter interface {
 
 type BaseAdapter struct{}
 
+func (BaseAdapter) Name() string                                 { return "base-adapter" }
 func (BaseAdapter) Models() (slice []model.Model)                { return }
 func (BaseAdapter) Completion(*gin.Context) (err error)          { return }
 func (BaseAdapter) Generation(*gin.Context) (err error)          { return }

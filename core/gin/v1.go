@@ -21,6 +21,9 @@ type Handler struct{ extensions []inter.Adapter }
 // @Inject()
 func New(container *sdk.Container) *Handler {
 	extensions := sdk.ListInvokeAs[inter.Adapter](container)
+	for _, ext := range extensions {
+		logger.Infof("load extension| name %+v, models: %+v", ext.Name(), ext.Models())
+	}
 	return &Handler{extensions}
 }
 

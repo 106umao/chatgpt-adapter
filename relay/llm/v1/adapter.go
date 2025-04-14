@@ -44,6 +44,10 @@ func init() {
 	})
 }
 
+func (api *api) Name() string {
+	return Model
+}
+
 func (*api) Match(ctx *gin.Context, model string) (ok bool, _ error) {
 	for _, it := range schema {
 		if prefix, o := it["prefix"].(string); o && strings.HasPrefix(model, prefix+"/") {
