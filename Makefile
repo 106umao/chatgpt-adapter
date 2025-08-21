@@ -30,5 +30,5 @@ build-win:
 docker-build:
 	docker build -t chatgpt-adapter:dev -f ./deploy/Dockerfile-DEV .
 
-docker-reload: docker-build
+docker-reload:
 	docker images && docker ps && docker stop chatgpt-adapter-dev && docker rm chatgpt-adapter-dev  && docker run -d --name chatgpt-adapter-dev -p 8080:8080 chatgpt-adapter:dev && docker ps
